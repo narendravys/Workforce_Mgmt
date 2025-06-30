@@ -1,9 +1,25 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+departments = [
+  { name: "Human Resources", code: "HR" },
+  { name: "Engineering", code: "ENG" },
+  { name: "Quality Assurance", code: "QA" },
+  { name: "UI/UX Design", code: "UX" },
+  { name: "DevOps", code: "DEVOPS" },
+  { name: "Finance", code: "FIN" },
+  { name: "Sales", code: "SLS" },
+  { name: "Marketing", code: "MKT" },
+  { name: "Product Management", code: "PM" },
+  { name: "Business Analysis", code: "BA" },
+  { name: "Technical Support", code: "SUP" },
+  { name: "Legal", code: "LEG" },
+  { name: "Administration", code: "ADM" },
+  { name: "Security & Compliance", code: "SEC" },
+  { name: "Data Science & Analytics", code: "DS" },
+  { name: "Research & Development", code: "RND" },
+  { name: "Training & Development", code: "TND" }
+]
+
+departments.each do |dept|
+  Department.find_or_create_by!(code: dept[:code]) do |d|
+    d.name = dept[:name]
+  end
+end
