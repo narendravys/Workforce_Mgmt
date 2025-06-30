@@ -1,0 +1,1 @@
+JWT_SECRET_KEY = ENV['JWT_SECRET_KEY'] || ''
