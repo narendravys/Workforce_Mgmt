@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'login', to: 'authentication#login'
       post 'signup', to: 'authentication#signup'
+      resources :users
     end
   end
 end
