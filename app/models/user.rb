@@ -19,4 +19,10 @@ class User < ApplicationRecord
         sales: 14
     }
 
+    belongs_to :manager, class_name: 'User', optional: true, foreign_key: 'manager_id'
+
+    has_many :subordinates, class_name: 'User', foreign_key: 'manager_id'
+
+    has_many :team_leads, -> { where(role: 'team_lead') }, class_name: 'User', foreign_key: 'manager_id'
+    has_many :developers, -> { where(role: 'developer') }, class_name: 'User', foreign_key: 'manager_id'
 end
