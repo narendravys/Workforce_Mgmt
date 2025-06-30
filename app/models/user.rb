@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+    has_one_attached :photo
     has_one :employee, class_name: "Employee", foreign_key: :user_id
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
